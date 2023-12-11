@@ -31,12 +31,36 @@ def handle_hello():
     # this is how you can use the Family datastructure by calling its methods
     members = jackson_family.get_all_members()
     response_body = {
-        "hello": "world",
         "family": members
     }
 
 
     return jsonify(response_body), 200
+
+@app.route('/members/<id>', methods=['GET'], )
+def handle_get_one_member(id):
+    jackson_family.get_member(id)
+    return id, 200
+
+@app.route('/members', methods=['POST'])
+def handle_add_member():
+    json_data = request.get_json()
+    required_keys = ["first_name", "age", "lucky_numbers"]
+    for key in required_keys:
+        if key not in json_data:
+            return f"missing {key} key from the request body", 400
+        
+    if json_data["age"] is not isinstance(json_data["age"], int):
+        return "age is not an integer", 400
+    
+    new_member = {
+        "first_name": json_data["first_name"],
+        "age": json_data["age"],
+        "lucky_numbers": json_data["lucky_numbers"],
+    }
+
+    inner_member_data = jackson_family.add_member(new_member)
+    return jsonify(inner_member_data), 201
 
 # this only runs if `$ python src/app.py` is executed
 if __name__ == '__main__':
