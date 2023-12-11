@@ -38,9 +38,13 @@ def handle_hello():
     return jsonify(response_body), 200
 
 @app.route('/members/<id>', methods=['GET'], )
-def handle_get_one_member(id):
-    jackson_family.get_member(id)
-    return id, 200
+def handle_get_one_member(member_id):
+    member = jackson_family.get_member(member_id)
+
+    if member is None:
+        return jsonify({"error": "Member not found"}), 404
+
+    return jsonify(member), 200
 
 @app.route('/members', methods=['POST'])
 def handle_add_member():
@@ -50,7 +54,7 @@ def handle_add_member():
         if key not in json_data:
             return f"missing {key} key from the request body", 400
         
-    if json_data["age"] is not isinstance(json_data["age"], int):
+    if not isinstance(json_data["age"], int):
         return "age is not an integer", 400
     
     new_member = {
