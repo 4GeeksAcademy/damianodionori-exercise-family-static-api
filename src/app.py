@@ -68,6 +68,11 @@ def handle_add_member():
     inner_member_data = jackson_family.add_member(new_member)
     return jsonify(inner_member_data), 201
 
+@app.route("/member/<int:member_id>", methods=["DELETE"])
+def handle_delete_member(member_id):
+    message = jackson_family.delete_member(member_id)
+
+    return jsonify(message), 200
 
 # this only runs if `$ python src/app.py` is executed
 if __name__ == "__main__":

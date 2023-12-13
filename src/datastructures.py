@@ -44,9 +44,9 @@ class FamilyStructure:
         return inner_member
 
     def delete_member(self, member_id):
-        self._members = [
-            member for member in self._members if member["id"] != member_id
-        ]
+        member_to_delete = self.get_member(member_id)
+        self._members.remove(member_to_delete)
+
         return {"message": "Member deleted successfully"}
 
     def get_member(self, member_id):
