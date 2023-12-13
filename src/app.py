@@ -38,7 +38,7 @@ def handle_hello():
     return jsonify(response_body), 200
 
 
-@app.route("/members/<member_id>", methods=["GET"])
+@app.route("/member/<int:member_id>", methods=["GET"])
 def handle_get_one_member(member_id):
     member = jackson_family.get_member(member_id)
 
