@@ -34,4 +34,4 @@ def generate_sitemap(app):
         <div style="text-align: center;">
         <img style="width: 50%" src='https://static.emisorasunidas.com/uploads/2017/10/jackson-5-1977-portrait-billboard-1548.jpg' />
         <h1>Greetings from the Jackson Family!</h1>
-        This is my api home, by using these endpoits you can add, get or delete members!<ul style="text-align: left;">"""+links_html+"</ul></div>"
+        This is my api home, by using these endpoits you can add, get or delete members of the band!<ul style="text-align: left;">"""+links_html+"</ul></div>"
