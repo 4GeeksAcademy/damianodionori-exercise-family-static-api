@@ -32,6 +32,6 @@ def generate_sitemap(app):
     links_html = "".join(["<li><a href='" + y + "'>" + y + "</a></li>" for y in links])
     return """
         <div style="text-align: center;">
-        <img src='https://github.com/breatheco-de/exercise-family-static-api/blob/master/rigo-baby.jpeg?raw=true' />
-        <h1>Hello Rigo!!</h1>
-        This is your api home, remember to specify a real endpoint path like: <ul style="text-align: left;">"""+links_html+"</ul></div>"
+        <img style="width: 50%" src='https://static.emisorasunidas.com/uploads/2017/10/jackson-5-1977-portrait-billboard-1548.jpg' />
+        <h1>Greetings from the Jackson Family!</h1>
+        This is my api home, by using these endpoits you can add, get or delete members!<ul style="text-align: left;">"""+links_html+"</ul></div>"

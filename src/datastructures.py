@@ -55,6 +55,16 @@ class FamilyStructure:
                 print(member)
                 return member
         return None
+    
+    def update_member(self, member_id, updated_member):
+        for i, member in enumerate(self._members):
+            if member["id"] == member_id:
+                for key, value in updated_member.items():
+                    if key in self._members[i]:
+                        self._members[i][key] = value
+                return {"message": "Member updated successfully", "updated_member": updated_member}
+
+        return {"error": "Member not found"}
 
     def get_all_members(self):
         return self._members

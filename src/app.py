@@ -68,6 +68,12 @@ def handle_add_member():
     inner_member_data = jackson_family.add_member(new_member)
     return jsonify(inner_member_data), 201
 
+@app.route("/member/<int:member_id>", methods=["PUT"])
+def handle_update_member(member_id):
+    json_data = request.get_json()
+    result = jackson_family.update_member(member_id, json_data)
+    return jsonify(result), 200
+
 @app.route("/member/<int:member_id>", methods=["DELETE"])
 def handle_delete_member(member_id):
     message = jackson_family.delete_member(member_id)
